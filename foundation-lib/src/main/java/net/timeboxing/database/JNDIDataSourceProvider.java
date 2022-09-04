@@ -21,8 +21,7 @@ public class JNDIDataSourceProvider implements Provider<DataSource> {
         try {
             return InitialContext.doLookup(jndiName);
         } catch (NamingException e) {
-            // TODO: better exception
-            throw new RuntimeException(e);
+            throw new DataSourceNotFoundException(e);
         }
     }
 }

@@ -90,12 +90,12 @@
         <dependency>
             <groupId>net.timeboxing</groupId>
             <artifactId>vaadin-lib</artifactId>
-            <version>${parent.version}</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>net.timeboxing</groupId>
             <artifactId>foundation-lib</artifactId>
-            <version>${parent.version}</version>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>

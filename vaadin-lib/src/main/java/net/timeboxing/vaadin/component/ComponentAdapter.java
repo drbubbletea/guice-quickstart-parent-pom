@@ -1,11 +1,7 @@
 package net.timeboxing.vaadin.component;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.inject.Inject;
 import javax.inject.Provider;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -13,53 +9,35 @@ import java.util.Optional;
  */
 public class ComponentAdapter {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ComponentAdapter.class);
 
-    private static Provider<Map<ComponentCreatorKey, VaadinComponentCreator>> creatorsProvider;
+    private static Provider<DefaultVaadinComponentFactory> factoryProvider;
+    private static Provider<CustomVaadinComponentFactory> customFactoryProvider;
 
     private ComponentAdapter() {
         /* NOOP */
     }
 
     @Inject
-    public static void initialize(Provider<Map<ComponentCreatorKey, VaadinComponentCreator>> provider) {
-        creatorsProvider = provider;
+    public static void initialize(Provider<DefaultVaadinComponentFactory> provider, Provider<CustomVaadinComponentFactory> customProvider) {
+        factoryProvider = provider;
+        customFactoryProvider = customProvider;
     }
 
     /**
-     * Find a suitable Component based on the source object and the stated purpose.
-     *
-     * TODO: clean up this method
+     * Find a suitable Component based on the ComponentPurpose value provided.
      */
     public static Optional<VaadinComponent> adapt(Object source, ComponentPurpose purpose) {
-        if (creatorsProvider == null) {
-            throw new ComponentAdapterException("Component factory not initialized");
+        if (factoryProvider == null) {
+            throw new ComponentAdapterException("Default component factory not initialized");
         }
-        ComponentCreatorKey key = new ComponentCreatorKey(source.getClass(), purpose);
-        // find creator for class
-        LOG.debug("Looking for creator for {}", key);
-        VaadinComponentCreator creator = creatorsProvider.get().getOrDefault(key, null);
-        VaadinComponent result = null;
-        if (creator != null) {
-            result = creator.create(source, purpose);
+        return factoryProvider.get().get(source, purpose);
+    }
+
+    public static Optional<VaadinComponent> adapt(Object source, String type, String purpose) {
+        if (factoryProvider == null) {
+            throw new ComponentAdapterException("Custom component factory not initialized");
         }
-        if (result == null) {
-            // find creator for interface
-            Class<?>[] interfaces = source.getClass().getInterfaces();
-            for (int i = 0; i < interfaces.length; i++) {
-                key = new ComponentCreatorKey(interfaces[i], purpose);
-                LOG.debug("Looking for creator for {}", key);
-                creator = creatorsProvider.get().getOrDefault(key, null);
-                if (creator != null) {
-                    result = creator.create(source, purpose);
-                    break;
-                }
-            }
-        }
-        if (result == null) {
-            return Optional.empty();
-        }
-        return Optional.of(result);
+        return customFactoryProvider.get().get(source, type, purpose);
     }
 
 }

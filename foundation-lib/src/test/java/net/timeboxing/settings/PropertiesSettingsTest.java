@@ -6,10 +6,10 @@ import net.timeboxing.settings.guice.PropertiesSettingsModule;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class PropertiesSettingsTest {
+class PropertiesSettingsTest {
 
     @Test
-    public void canGetProperties() {
+    void canGetProperties() {
         Injector injector = Guice.createInjector(new PropertiesSettingsModule("classpath:/example.properties"));
         Settings settings = injector.getInstance(Settings.class);
         Assertions.assertEquals("test", settings.getString("database.name").orElseThrow());

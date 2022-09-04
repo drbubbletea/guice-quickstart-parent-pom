@@ -9,7 +9,7 @@ public abstract class AbstractComponentEvent implements ComponentEvent {
     private final VaadinComponent producedBy;
     private final Object data;
 
-    public AbstractComponentEvent(VaadinComponent producedBy) {
+    protected AbstractComponentEvent(VaadinComponent producedBy) {
         this.producedBy = producedBy;
         this.data = null;
     }

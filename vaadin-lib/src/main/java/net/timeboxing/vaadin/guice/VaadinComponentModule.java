@@ -1,5 +1,6 @@
 package net.timeboxing.vaadin.guice;
 
+import com.google.common.base.Strings;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.multibindings.MapBinder;
@@ -16,8 +17,10 @@ public class VaadinComponentModule extends AbstractModule {
 
     private final String packageToScan;
 
-    private final TypeLiteral<ComponentCreatorKey> componentCreatorKeyTypeLiteral = TypeLiteral.get(ComponentCreatorKey.class);
-    private final TypeLiteral<VaadinComponentCreator> componentCreatorTypeLiteral = TypeLiteral.get(VaadinComponentCreator.class);
+    private final TypeLiteral<DefaultComponentCreatorKey> componentCreatorKeyTypeLiteral = TypeLiteral.get(DefaultComponentCreatorKey.class);
+    private final TypeLiteral<CustomComponentCreatorKey> customComponentCreatorKeyTypeLiteral = TypeLiteral.get(CustomComponentCreatorKey.class);
+    private final TypeLiteral<DefaultVaadinComponentCreator> componentCreatorTypeLiteral = TypeLiteral.get(DefaultVaadinComponentCreator.class);
+    private final TypeLiteral<CustomVaadinComponentCreator> customVaadinComponentCreatorTypeLiteral = TypeLiteral.get(CustomVaadinComponentCreator.class);
 
     public VaadinComponentModule(String packageToScan) {
         this.packageToScan = packageToScan;
@@ -29,16 +32,26 @@ public class VaadinComponentModule extends AbstractModule {
 
         Reflections reflections = new Reflections(packageToScan);
         Set<Class<?>> components = reflections.getTypesAnnotatedWith(ComponentFor.class);
-        MapBinder<ComponentCreatorKey, VaadinComponentCreator> creators = MapBinder.newMapBinder(binder(), componentCreatorKeyTypeLiteral, componentCreatorTypeLiteral);
+        MapBinder<DefaultComponentCreatorKey, DefaultVaadinComponentCreator> defaultCreators = MapBinder.newMapBinder(binder(), componentCreatorKeyTypeLiteral, componentCreatorTypeLiteral);
+        MapBinder<CustomComponentCreatorKey, CustomVaadinComponentCreator> customCreators = MapBinder.newMapBinder(binder(), customComponentCreatorKeyTypeLiteral, customVaadinComponentCreatorTypeLiteral);
         for (Class<?> component : components) {
             LOG.debug("Found class {}", component.getCanonicalName());
             ComponentFor annotation = component.getAnnotation(ComponentFor.class);
             Class<?> forClass = annotation.forClass();
-            ComponentPurpose purpose = annotation.purpose();
-            ComponentCreatorKey key = new ComponentCreatorKey(forClass, purpose);
-            VaadinComponentCreator creator = new VaadinComponentCreator(component);
-            creators.addBinding(key).toInstance(creator);
-            LOG.debug("Bound creator: {}", key);
+            if (Strings.isNullOrEmpty(annotation.purposeType()) && Strings.isNullOrEmpty(annotation.purposeValue())) {
+                ComponentPurpose purpose = annotation.purpose();
+                DefaultComponentCreatorKey key = new DefaultComponentCreatorKey(forClass, purpose);
+                DefaultVaadinComponentCreator creator = new DefaultVaadinComponentCreator(component);
+                defaultCreators.addBinding(key).toInstance(creator);
+                LOG.debug("Bound creator: {}", key);
+            } else {
+                String purpose = annotation.purposeType();
+                String value = annotation.purposeValue();
+                CustomComponentCreatorKey key = new CustomComponentCreatorKey(forClass, purpose, value);
+                CustomVaadinComponentCreator creator = new CustomVaadinComponentCreator(component);
+                customCreators.addBinding(key).toInstance(creator);
+                LOG.debug("Bound creator: {}", key);
+            }
         }
     }
 }

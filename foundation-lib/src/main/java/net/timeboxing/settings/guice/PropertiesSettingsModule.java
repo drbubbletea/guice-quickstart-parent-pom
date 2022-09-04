@@ -15,7 +15,6 @@ public class PropertiesSettingsModule extends AbstractModule {
     @Override
     protected void configure() {
         super.configure();
-        // TODO: support check for updates & event handling for updates
         PropertiesSettings settings = new PropertiesSettings(fileName);
         bind(Settings.class).toInstance(settings);
     }

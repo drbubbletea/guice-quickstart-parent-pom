@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class JdbiProvider implements Provider<Jdbi> {
 
-    private final Logger LOG = LoggerFactory.getLogger(JdbiProvider.class);
+    private static final Logger LOG = LoggerFactory.getLogger(JdbiProvider.class);
     private final Provider<DataSource> dataSourceProvider;
 
     public JdbiProvider(Provider<DataSource> dataSourceProvider) {

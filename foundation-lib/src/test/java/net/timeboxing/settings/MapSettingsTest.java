@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapSettingsTest {
+class MapSettingsTest {
 
     @Test
-    public void canGetProperties() {
+    void canGetProperties() {
         Map<String, String> properties = new HashMap<>();
         properties.put("database.name", "test");
         properties.put("database.username", "tester");

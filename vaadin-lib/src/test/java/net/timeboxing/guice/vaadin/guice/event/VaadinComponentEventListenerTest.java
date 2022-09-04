@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class VaadinComponentEventListenerTest {
+class VaadinComponentEventListenerTest {
 
     @Test
-    public void canUnregister() {
+    void canUnregister() {
         DefaultVaadinComponentEventBus eventBus = new DefaultVaadinComponentEventBus();
 
         ListenerRegistration registration = eventBus.listen(YesEvent.class, this::runMe);
@@ -25,7 +25,7 @@ public class VaadinComponentEventListenerTest {
 
 
     @Test
-    public void gcRemoves() {
+    void gcRemoves() {
         DefaultVaadinComponentEventBus eventBus = new DefaultVaadinComponentEventBus();
 
         ListenerRegistration registration = eventBus.listen(YesEvent.class, this::runMe);
@@ -37,7 +37,7 @@ public class VaadinComponentEventListenerTest {
     }
 
     @Test
-    public void listenerInvokedMatchingEvent() {
+    void listenerInvokedMatchingEvent() {
         DefaultVaadinComponentEventBus eventBus = new DefaultVaadinComponentEventBus();
         AtomicBoolean modified = new AtomicBoolean(false);
         ListenerRegistration registration = eventBus.listen(YesEvent.class, event -> {
@@ -48,7 +48,7 @@ public class VaadinComponentEventListenerTest {
     }
 
     @Test
-    public void listenerNotInvokedDifferentEvent() {
+    void listenerNotInvokedDifferentEvent() {
         DefaultVaadinComponentEventBus eventBus = new DefaultVaadinComponentEventBus();
         AtomicBoolean modified = new AtomicBoolean(false);
         ListenerRegistration registration = eventBus.listen(YesEvent.class, event -> {
