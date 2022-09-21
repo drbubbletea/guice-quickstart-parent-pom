@@ -61,4 +61,12 @@ public interface VaadinComponent {
      * @return true if the specified component is the parent of this class. false if not or no parent is defined.
      */
     boolean isParentOrDirectChild(VaadinComponent component);
+
+    /**
+     * Explicitly remove a child from a component and calls the child disassociate method.
+     * @param component
+     */
+    void disassociateChild(VaadinComponent component);
+    
+    void disassociate();
 }

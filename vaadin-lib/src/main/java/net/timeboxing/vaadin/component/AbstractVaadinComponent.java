@@ -1,5 +1,8 @@
 package net.timeboxing.vaadin.component;
 
+import net.timeboxing.vaadin.event.ListenerRegistrations;
+import net.timeboxing.vaadin.event.impl.DefaultListenerRegistrations;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,6 +10,8 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class AbstractVaadinComponent implements VaadinComponent {
+
+    protected final ListenerRegistrations registrations = new DefaultListenerRegistrations();
 
     /**
      * It is assumed the parent is not something changed frequently enough we need to worry about thread safety for
@@ -96,5 +101,32 @@ public abstract class AbstractVaadinComponent implements VaadinComponent {
             }
         }
         return false;
+    }
+
+    @Override
+    public void disassociateChild(VaadinComponent component) {
+        List<WeakReference<VaadinComponent>> directChildren = children.get();
+        Iterator<WeakReference<VaadinComponent>> iterator = directChildren.iterator();
+        while (iterator.hasNext()) {
+            WeakReference<VaadinComponent> ref = iterator.next();
+            VaadinComponent referenced = ref.get();
+            if (null != referenced && referenced.equals(component)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    @Override
+    public final void disassociate() {
+        registrations.removeAll();
+        List<WeakReference<VaadinComponent>> directChildren = children.get();
+        Iterator<WeakReference<VaadinComponent>> iterator = directChildren.iterator();
+        while (iterator.hasNext()) {
+            VaadinComponent reference = iterator.next().get();
+            if (reference != null) {
+                reference.disassociate();
+            }
+            iterator.remove();
+        }
     }
 }

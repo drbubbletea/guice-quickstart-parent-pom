@@ -58,4 +58,46 @@ class GuiceComponentAdapterRelationshipTest {
         // no longer considered a child once GCed
         Assertions.assertFalse(child.hasDirectChild());
     }
+
+    @Test
+    void parentAndChildExplicitlyRemoveChild() {
+        User user = new DefaultUser(5);
+        Injector injector = Guice.createInjector(new TestVaadinComponentModule());
+        VaadinComponent parent = ComponentAdapter.adapt(user, ComponentPurpose.VIEW).orElseThrow();
+        Assertions.assertEquals(UserViewComponent.class, parent.getClass());
+
+        VaadinComponent child = ComponentAdapter.adapt(parent, user, ComponentPurpose.EDIT).orElseThrow();
+        Assertions.assertEquals(UserEditComponent.class, child.getClass());
+
+        Assertions.assertTrue(child.isParent(parent));
+        Assertions.assertTrue(parent.hasDirectChild());
+        Assertions.assertTrue(parent.isDirectChild(child));
+        Assertions.assertTrue(parent.isDescendant(child));
+
+        parent.disassociateChild(child);
+
+        Assertions.assertFalse(parent.hasDirectChild());
+    }
+
+    @Test
+    void disassociateRecursively() {
+        User user = new DefaultUser(5);
+        Injector injector = Guice.createInjector(new TestVaadinComponentModule());
+        VaadinComponent parent = ComponentAdapter.adapt(user, ComponentPurpose.VIEW).orElseThrow();
+        Assertions.assertEquals(UserViewComponent.class, parent.getClass());
+
+        VaadinComponent child = ComponentAdapter.adapt(parent, user, ComponentPurpose.EDIT).orElseThrow();
+        Assertions.assertEquals(UserEditComponent.class, child.getClass());
+
+        VaadinComponent descendant = ComponentAdapter.adapt(child, user, ComponentPurpose.EDIT).orElseThrow();
+        Assertions.assertEquals(UserEditComponent.class, descendant.getClass());
+
+        Assertions.assertTrue(parent.hasDirectChild());
+        Assertions.assertTrue(child.hasDirectChild());
+
+        parent.disassociate();
+        // TODO: validate listener counts become 0
+        Assertions.assertFalse(parent.hasDirectChild());
+        Assertions.assertFalse(child.hasDirectChild());
+    }
 }

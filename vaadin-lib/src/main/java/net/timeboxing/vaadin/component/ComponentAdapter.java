@@ -26,6 +26,7 @@ public class ComponentAdapter {
     /**
      * Find a suitable VaadinComponent based on the ComponentPurpose value provided.
      */
+    @Deprecated
     public static Optional<VaadinComponent> adapt(Object source, ComponentPurpose purpose) {
         if (factoryProvider == null) {
             throw new ComponentAdapterException("Default component factory not initialized");
@@ -36,6 +37,7 @@ public class ComponentAdapter {
     /**
      * Find a suitable VaadinComponent based on the type and purpose provided.
      */
+    @Deprecated
     public static Optional<VaadinComponent> adapt(Object source, String type, String purpose) {
         if (factoryProvider == null) {
             throw new ComponentAdapterException("Custom component factory not initialized");
