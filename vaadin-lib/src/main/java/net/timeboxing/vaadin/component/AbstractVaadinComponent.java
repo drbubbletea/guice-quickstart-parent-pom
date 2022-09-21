@@ -111,6 +111,9 @@ public abstract class AbstractVaadinComponent implements VaadinComponent {
             WeakReference<VaadinComponent> ref = iterator.next();
             VaadinComponent referenced = ref.get();
             if (null != referenced && referenced.equals(component)) {
+                referenced.disassociate();
+                iterator.remove();
+            } else if (null == referenced) {
                 iterator.remove();
             }
         }
