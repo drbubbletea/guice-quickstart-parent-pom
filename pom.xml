@@ -7,7 +7,7 @@
   <groupId>net.timeboxing</groupId>
   <artifactId>guice-quickstart</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <modules>
       <module>foundation-lib</module>
       <module>vaadin-lib</module>
@@ -51,11 +51,6 @@
         <version>0.10.2</version>
       </dependency>
       <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>1.2.11</version>
-      </dependency>
-      <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
         <version>2.1.214</version>
@@ -71,6 +66,16 @@
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.4.1</version>
+    </dependency>
   </dependencies>
 
   <build>

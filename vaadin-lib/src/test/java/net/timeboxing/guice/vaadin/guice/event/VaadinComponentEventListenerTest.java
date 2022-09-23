@@ -1,7 +1,7 @@
 package net.timeboxing.guice.vaadin.guice.event;
 
+import net.timeboxing.listener.ListenerRegistration;
 import net.timeboxing.vaadin.event.ComponentEvent;
-import net.timeboxing.vaadin.event.ListenerRegistration;
 import net.timeboxing.vaadin.event.impl.DefaultVaadinComponentEventBus;
 import net.timeboxing.vaadin.event.impl.NoEvent;
 import net.timeboxing.vaadin.event.impl.YesEvent;

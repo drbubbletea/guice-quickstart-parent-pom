@@ -1,5 +1,7 @@
 package net.timeboxing.vaadin.event;
 
+import net.timeboxing.listener.ListenerRegistration;
+
 public interface VaadinComponentEventBus {
 
     /**

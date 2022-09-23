@@ -1,4 +1,4 @@
-package net.timeboxing.vaadin.event;
+package net.timeboxing.listener;
 
 public interface ListenerRegistration {
     void unregister();
