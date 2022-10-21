@@ -8,6 +8,7 @@ import com.google.inject.multibindings.Multibinder;
 import net.timeboxing.jobs.TestInjection;
 import net.timeboxing.jobs.quartz.AppScheduler;
 import net.timeboxing.jobs.quartz.GuiceJobFactory;
+import net.timeboxing.jobs.rest.TestPath;
 import net.timeboxing.rest.guice.RestModule;
 import org.quartz.Job;
 import org.quartz.Scheduler;

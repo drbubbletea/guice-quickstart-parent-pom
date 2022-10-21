@@ -1,6 +1,7 @@
 package net.timeboxing.rest.guice;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.Scopes;
 import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class RestModule extends AbstractModule {
 
         for (Class<?> path: reflections.getTypesAnnotatedWith(Path.class)) {
             LOG.debug("Binding path {}", path.getName());
-            bind(path);
+            bind(path).in(Scopes.SINGLETON);
         }
 
         for (Class<?> provider: reflections.getTypesAnnotatedWith(Provider.class)) {

@@ -1,4 +1,4 @@
-package net.timeboxing.jobs.rest;
+package net.timeboxing.rest.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -10,7 +10,6 @@ public class TestPath {
 
     @Path("testing")
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
     public String test() {
         return "testing!";
     }
