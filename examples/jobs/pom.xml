@@ -4,7 +4,7 @@
   <parent>
     <artifactId>guice-quickstart</artifactId>
     <groupId>net.timeboxing</groupId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
   </parent>
 
   <artifactId>jobs</artifactId>
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>net.timeboxing</groupId>
       <artifactId>rest-lib</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.0.1</version>
     </dependency>
     <dependency>
       <groupId>org.jboss.resteasy</groupId>

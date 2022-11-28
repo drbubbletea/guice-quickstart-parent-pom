@@ -7,7 +7,7 @@
   <groupId>net.timeboxing</groupId>
   <artifactId>guice-quickstart</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <modules>
       <module>foundation-lib</module>
       <module>vaadin-lib</module>
