@@ -1,7 +1,7 @@
 package net.timeboxing.vaadin.event.impl;
 
+import net.timeboxing.listener.ListenerRegistration;
 import net.timeboxing.vaadin.event.ComponentEvent;
-import net.timeboxing.vaadin.event.ListenerRegistration;
 import net.timeboxing.vaadin.event.VaadinComponentEventListener;
 
 import java.lang.ref.WeakReference;
