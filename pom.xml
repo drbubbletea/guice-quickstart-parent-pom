@@ -6,22 +6,29 @@
 
   <groupId>net.timeboxing</groupId>
   <artifactId>guice-quickstart</artifactId>
-    <packaging>pom</packaging>
-    <version>0.0.3</version>
-    <modules>
-      <module>foundation-lib</module>
-      <module>vaadin-lib</module>
-      <module>rest-lib</module>
-    </modules>
+  <packaging>pom</packaging>
+  <version>0.0.4-SNAPSHOT</version>
 
-    <name>guice-quickstart</name>
+  <name>guice-quickstart</name>
+
+  <modules>
+    <module>lib-foundation</module>
+    <module>lib-vaadin</module>
+    <module>lib-rest</module>
+    <module>lib-adapter</module>
+    <module>lib-qtjambi</module>
+    <module>guice-quickstart-bom</module>
+    <module>examples</module>
+  </modules>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <encoding>UTF-8</encoding>
+    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <java.version>11</java.version>
     <guice.version>5.1.0</guice.version>
+    <aspectj.version>1.9.7</aspectj.version>
   </properties>
 
   <dependencyManagement>
@@ -80,14 +87,12 @@
   </dependencies>
 
   <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
@@ -112,7 +117,6 @@
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.7.1</version>
@@ -120,6 +124,10 @@
         <plugin>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>3.0.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>3.3.0</version>
         </plugin>
       </plugins>
     </pluginManagement>

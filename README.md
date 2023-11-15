@@ -8,9 +8,9 @@ https://github.com/drbubbletea/guice-quickstart
 
 ## Libraries
 
-### [foundation-lib](./foundation-lib)
+### [lib-foundation-lib](./lib-foundation)
 
-### [vaadin-lib](./vaadin-lib)
+### [lib-vaadin-lib](./lib-vaadin)
 
 ## Examples
 
