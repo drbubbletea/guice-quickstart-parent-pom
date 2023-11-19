@@ -9,16 +9,18 @@ import java.util.Map;
 
 public class DefaultListenerRegistration implements ListenerRegistration {
 
-    private final WeakReference<VaadinComponentEventListener<?>> listener;
+    private final VaadinComponentEventListener<?> listener;
+    private final WeakReference<VaadinComponentEventListener<?>> reference;
 
     private final Map<WeakReference<VaadinComponentEventListener<?>>, Class<? extends ComponentEvent>> listeners;
 
-    public DefaultListenerRegistration(WeakReference<VaadinComponentEventListener<?>> listener, Map<WeakReference<VaadinComponentEventListener<?>>, Class<? extends ComponentEvent>> listeners) {
-        this.listener = listener;
+    public DefaultListenerRegistration(WeakReference<VaadinComponentEventListener<?>> reference, Map<WeakReference<VaadinComponentEventListener<?>>, Class<? extends ComponentEvent>> listeners) {
+        this.reference = reference;
+        this.listener = reference.get();
         this.listeners = listeners;
     }
     @Override
     public void unregister() {
-        listeners.remove(listener);
+        listeners.remove(reference);
     }
 }
