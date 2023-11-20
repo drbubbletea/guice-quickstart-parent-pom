@@ -20,6 +20,6 @@ public class ComponentForTranslation extends CustomAdaptedFromTranslation<Compon
 
     @Override
     public Object purposeValue(ComponentFor instance) {
-        return instance.purposeValue();
+        return instance.purpose().toString();
     }
 }

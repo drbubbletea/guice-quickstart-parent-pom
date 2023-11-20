@@ -4,11 +4,12 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Label;
 import net.timeboxing.adapter.Adaptee;
 import net.timeboxing.vaadin.component.ComponentFor;
+import net.timeboxing.vaadin.component.ComponentPurpose;
 import net.timeboxing.vaadin.component.VaadinComponent;
 
 import javax.inject.Inject;
 
-@ComponentFor(forClass = User.class, purposeValue = "EDIT")
+@ComponentFor(forClass = User.class, purpose = ComponentPurpose.EDIT)
 public class UserEditComponent implements VaadinComponent {
 
     private final User user;

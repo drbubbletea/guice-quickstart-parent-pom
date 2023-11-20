@@ -1,6 +1,5 @@
 package net.timeboxing.vaadin.component;
 
-
 import net.timeboxing.adapter.CustomAdaptedFrom;
 
 import java.lang.annotation.ElementType;
@@ -11,9 +10,10 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @CustomAdaptedFrom(translation = ComponentForTranslation.class)
-public @interface ComponentFor {
-
+public @interface ComponentForEnum {
     Class<?> forClass();
 
-    ComponentPurpose purpose() default ComponentPurpose.DEFAULT;
+    Class<? extends Enum<?>> purpose() default ComponentPurpose.class;
+
+    String purposeValue() default "DEFAULT";
 }
