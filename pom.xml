@@ -10,6 +10,14 @@
   <version>0.0.4-SNAPSHOT</version>
 
   <name>guice-quickstart</name>
+  <url>https://github.com/drbubbletea/guice-quickstart</url>
+  
+  <licenses>
+    <license>
+      <name>MIT</name>
+      <comments>Copy of the MIT license provided in the 'LICENSE' file</comments>
+    </license>
+  </licenses>
 
   <modules>
     <module>lib-foundation</module>

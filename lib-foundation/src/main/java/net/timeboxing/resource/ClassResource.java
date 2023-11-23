@@ -14,7 +14,7 @@ public class ClassResource {
         try  (InputStream is = Class.forName(Thread.currentThread().getStackTrace()[2].getClassName()).getResourceAsStream(filename)) {
             return new String(is.readAllBytes());
         } catch (ClassNotFoundException | IOException | NullPointerException e) {
-            throw new ClassResourceNotFoundException(e);
+            throw new ClassResourceNotFoundException("Unable to find class resource file with name: " + filename, e);
         }
     }
 }
