@@ -89,7 +89,7 @@ public class DefaultAdaptedFromCreator implements AdaptedFromCreator {
             injector.injectMembers(instance);
             return instance;
         } catch (Exception e) {
-            throw new AdaptException("Failed to create component instance. Possibly forgot to annotate @Adaptee or @Purpose on the source constructor parameter?", e);
+            throw new AdaptException("Failed to create instance. Possibly forgot to annotate @Adaptee or @Purpose on the source constructor parameter?", e);
         }
     }
 }

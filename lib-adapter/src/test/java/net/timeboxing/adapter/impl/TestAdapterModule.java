@@ -10,14 +10,14 @@ public class TestAdapterModule extends AbstractModule {
 
     private static final Logger LOG = LoggerFactory.getLogger(TestAdapterModule.class);
 
-    private final String packageToTest;
+    private final String[] packagesToTest;
 
-    public TestAdapterModule(String packageToTest) {
-        this.packageToTest = packageToTest;
+    public TestAdapterModule(String... packagesToTest) {
+        this.packagesToTest = packagesToTest;
     }
     @Override
     protected void configure() {
-        install(new AdapterModule(packageToTest));
+        install(new AdapterModule(packagesToTest));
         install(new FactoryModuleBuilder().implement(User.class, DefaultUser.class).build(DomainFactory.class));
     }
 }
