@@ -19,16 +19,6 @@
     </license>
   </licenses>
 
-  <modules>
-    <module>lib-foundation</module>
-    <module>lib-vaadin</module>
-    <module>lib-rest</module>
-    <module>lib-adapter</module>
-    <module>lib-qtjambi</module>
-    <module>guice-quickstart-bom</module>
-    <module>examples</module>
-  </modules>
-
   <properties>
     <encoding>UTF-8</encoding>
     <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>

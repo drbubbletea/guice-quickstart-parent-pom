@@ -1,9 +1,0 @@
----
-- name: Guice Quickstart Examples Playbook
-  hosts: all
-#  vars:
-#
-  roles:
-    - role: core
-    - role: mariadb
-    - role: tomcat
