@@ -10,7 +10,7 @@
   <version>0.1.0</version>
 
   <name>guice-quickstart</name>
-  <url>https://github.com/drbubbletea/guice-quickstart</url>
+  <url>https://github.com/drbubbletea/guice-quickstart-parent-pom</url>
   
   <licenses>
     <license>
