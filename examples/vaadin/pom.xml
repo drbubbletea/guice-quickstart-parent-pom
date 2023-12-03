@@ -161,6 +161,13 @@
     <build>
         <defaultGoal>jetty:run</defaultGoal>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
             <!-- Define newer versions of Java compiler and war plugin to 
                  better support latest JDK versions. -->
             <plugin>

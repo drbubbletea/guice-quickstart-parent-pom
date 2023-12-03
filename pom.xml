@@ -42,8 +42,15 @@
   <distributionManagement>
     <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+<!--      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>-->
+      <!-- for testing deploy locally -->
+<!--      <url>file:C:\Users\......\.m3\</url>-->
     </snapshotRepository>
+    <repository>
+      <id>nexus-releases</id>
+<!--      <url>https://s01.oss.sonatype.org/content/repositories/releases/</url>-->
+<!--            <url>file:C:\Users\ccl09c\.m3-releases\</url>-->
+    </repository>
   </distributionManagement>
 
   <dependencyManagement>
