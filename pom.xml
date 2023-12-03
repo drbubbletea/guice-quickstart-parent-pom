@@ -7,7 +7,7 @@
   <groupId>net.timeboxing</groupId>
   <artifactId>guice-quickstart</artifactId>
   <packaging>pom</packaging>
-  <version>0.0.4-SNAPSHOT</version>
+  <version>0.1.0-SNAPSHOT</version>
 
   <name>guice-quickstart</name>
   <url>https://github.com/drbubbletea/guice-quickstart</url>
@@ -38,6 +38,13 @@
     <guice.version>5.1.0</guice.version>
     <aspectj.version>1.9.7</aspectj.version>
   </properties>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <dependencyManagement>
     <dependencies>

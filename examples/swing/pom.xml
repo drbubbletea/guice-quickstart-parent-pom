@@ -4,7 +4,7 @@
     <parent>
         <groupId>net.timeboxing</groupId>
         <artifactId>examples</artifactId>
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.1.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>swing</artifactId>
@@ -24,11 +24,6 @@
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.timeboxing</groupId>
-            <artifactId>adapter-test</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.formdev</groupId>
