@@ -21,3 +21,17 @@ A few examples of using these libraries are available in the [examples](./exampl
 ### [Job backend with Quartz](./examples/jobs-backend)
 
 ### [REST API](./examples/rest-api)
+
+# Development
+
+Prepare for deploy.
+```
+# remove snapshot suffix
+mvn versions:set -DremoveSnapshot
+
+# ensure build is successful
+mvn clean package
+
+# deploy
+mvn clean deploy
+```

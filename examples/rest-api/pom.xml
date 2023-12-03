@@ -4,12 +4,12 @@
     <parent>
         <groupId>net.timeboxing</groupId>
         <artifactId>examples</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
 
     <artifactId>rest-api</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
 
     <name>api</name>
 
@@ -39,7 +39,7 @@
                 <artifactId>guice-quickstart-bom</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

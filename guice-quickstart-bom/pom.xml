@@ -4,10 +4,10 @@
     <parent>
         <groupId>net.timeboxing</groupId>
         <artifactId>guice-quickstart</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
+        <version>0.1.0</version>
     </parent>
 
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     <artifactId>guice-quickstart-bom</artifactId>
     <packaging>pom</packaging>
 
@@ -22,22 +22,22 @@
             <dependency>
                 <groupId>net.timeboxing</groupId>
                 <artifactId>lib-adapter</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
             </dependency>
             <dependency>
                 <groupId>net.timeboxing</groupId>
                 <artifactId>lib-foundation</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
             </dependency>
             <dependency>
                 <groupId>net.timeboxing</groupId>
                 <artifactId>lib-vaadin</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
             </dependency>
             <dependency>
                 <groupId>net.timeboxing</groupId>
                 <artifactId>lib-rest</artifactId>
-                <version>0.1.0-SNAPSHOT</version>
+                <version>0.1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
